@@ -1,0 +1,25 @@
+{
+  "name": "language-support-for-taol",
+  "displayName": "Language support for TAOL",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "taol",
+      "aliases": ["taol", "taol"],
+      "extensions": [".taol"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "taol",
+      "scopeName": "source.taol",
+      "path": "./syntaxes/taol.tmLanguage.json"
+    }]
+  }
+}
