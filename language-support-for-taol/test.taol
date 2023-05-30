@@ -1,0 +1,43 @@
+host=0.0.0.0
+port=3000
+bot_token = xxxx
+database_url = xxx
+group_store = true
+group_message_store = true
+private_message_store = true
+user_store = true
+# 允许群管理员在群中修改群欢迎信息
+allow_dynamic_group_welcome = true
+
+wshooks:
+  - http://127.0.0.1:8080/ws
+  - https://api.scan.cpchain.io/ws
+
+define help cmd:
+    text: xxxxxx
+    markups: [
+        [
+            {
+                name: xxx
+                url: xxx
+            }
+        ]
+    ] 
+
+define group_welcome:
+    text: xxxx, ${username}
+    dura: 30m
+    markups: ...
+
+define cron_job * 1 * * *:
+    text: xxx
+    dura: 7d
+    markups: ...
+
+define airdrop cmd:
+    notify http://127.0.0.1:8080/ws/airdropxxx {account_id: $user_id, username: $username, session_id: $chat_id}
+
+listen dapp Handgame:
+    send_message:
+        text: xxx, ${CNS(event.player)} xxxx
+        markups: ...
