@@ -19,9 +19,18 @@
 		},
 		{
 			"include": "#comments"
+		},
+		{
+			"include": "#constants"
 		}
 	],
 	"repository": {
+		"constants": {
+			"patterns": [{
+				"match": "(true|false|null)",
+				"name": "constant.language"
+			}]
+		},
 		"entitys": {
 			"patterns": [{
 				"match": "\\b(cmd|dapp|group_welcome|cron_job)([\\s]+)([a-zA-Z0-9_]*)([\\s]*)(:*)",
@@ -43,9 +52,25 @@
 			}]
 		},
 		"comments": {
-			"begin": "/\\*",
-			"end": "\\*/",
-			"contentName": "comment.line.double-dash"
+			"patterns": [{
+				"begin": "(/\\*)",
+				"end": "(\\*/)",
+				"contentName": "comment.line.double-dash",
+				"beginCaptures": {
+					"1": {
+						"name":"comment.block"
+					}
+				},
+				"endCaptures": {
+					"1": {
+						"name":"comment.block"
+					}
+				}
+			},{
+				"begin": "(#|//)",
+				"end": "\\n",
+				"name": "comment.line.number-sign"
+			}]
 		},
 
 		"letter": {
