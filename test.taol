@@ -10,32 +10,36 @@ user_store = true
 allow_dynamic_group_welcome = true
 
 wshooks:
-  - http://127.0.0.1:8080/ws
-  - https://api.scan.cpchain.io/ws
+  - "http://127.0.0.1:8080/ws"
+  - "https://api.scan.cpchain.io/ws"
 
-define help cmd:
-    text: xxxxxx
-    markups: [
-        [
-            {
-                name: xxx
-                url: xxx
-            }
-        ]
-    ] 
+define
 
-define group_welcome:
-    text: xxxx, ${username}
+define cmd help:
+    text: "xxxxxx"
+    markups: 
+        - - text: "xxx"
+            url: ...
+          - text: "xxx2"
+            url: ...
+        - - text: "xxx3"
+            url: ...
+
+define group_welcome :
+    text: "xxxx", ${username}
     dura: 30m
     markups: ...
 
-define cron_job * 1 * * *:
+
+
+define cron_job job1:
+    cron: * 1 * * *
     text: xxx
     dura: 7d
     markups: ...
 
-define airdrop cmd:
-    notify http://127.0.0.1:8080/ws/airdropxxx {account_id: $user_id, username: $username, session_id: $chat_id}
+define cmd airdrop:
+    notify "http://127.0.0.1:8080/ws/airdropxxx" {account_id: ${user_id}, username: ${username}, session_id: ${chat_id}}
 
 listen dapp Handgame:
     send_message:

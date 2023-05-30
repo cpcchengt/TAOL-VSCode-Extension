@@ -7,13 +7,66 @@
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#letter"
+		},
+		{
+			"include": "#entitys"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#comments"
 		}
 	],
 	"repository": {
+		"entitys": {
+			"patterns": [{
+				"match": "\\b(cmd|dapp|group_welcome|cron_job)([\\s]+)([a-zA-Z0-9_]*)([\\s]*)(:*)",
+				"captures": {
+					"1": {
+						"name": "entity.name.type.taol"
+					},
+					"3": {
+						"name": "entity.name.function.taol"
+					}
+				}
+			},{
+				"match": "\\b([a-zA-Z0-9_]*)([\\s]{0,4}):",
+				"captures": {
+					"1": {
+						"name": "entity.other.attribute-name"
+					}
+				}
+			}]
+		},
+		"comments": {
+			"begin": "/\\*",
+			"end": "\\*/",
+			"contentName": "comment.line.double-dash"
+		},
+
+		"letter": {
+			"patterns": [{
+				"match": "\\b(define|listen)\\b",
+				"name": "keyword.letter.taol"
+			}]
+		},
+		"variables": {
+			"patterns": [{
+				"match": "\\b(host|port|bot_token|database_url|group_store|group_message_store|private_message_store|user_store|allow_dynamic_group_welcome|wshooks)\\b",
+				"name": "variable.other"
+			},{
+				"match": "\\$\\{(\\s*)([a-zA-Z0-9_]*)(\\s*)\\}",
+				"name": "variable.parameter"
+			}]
+		},
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.taol",
-				"match": "\\b(if|while|for|return|define|cmd)\\b"
+				"match": "\\b(if|while|for|return|notify)\\b"
 			}]
 		},
 		"strings": {
