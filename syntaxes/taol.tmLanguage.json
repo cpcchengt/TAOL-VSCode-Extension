@@ -33,13 +33,20 @@
 		},
 		"entitys": {
 			"patterns": [{
-				"match": "\\b(cmd|dapp|group_welcome|cron_job)([\\s]+)([a-zA-Z0-9_]*)([\\s]*)(:*)",
+				"match": "\\b(cmd|dapp|group_welcome|cron_job)([\\s]+)([a-zA-Z0-9_]+)([\\s]*)(:*)",
 				"captures": {
 					"1": {
 						"name": "entity.name.type.taol"
 					},
 					"3": {
 						"name": "entity.name.function.taol"
+					}
+				}
+			},{
+				"match": "\\b(cmd|dapp|group_welcome|cron_job)([\\s]*)(:*)",
+				"captures": {
+					"1": {
+						"name": "entity.name.type.taol"
 					}
 				}
 			},{
